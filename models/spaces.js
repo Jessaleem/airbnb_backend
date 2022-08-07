@@ -22,89 +22,89 @@ const SpaceSchema = new mongoose.Schema ({
     required: true,
   },
   adress: {
-    "street": {
+    street: {
       type: String,
       required: true,
     }, 
-    "city": {
+    city: {
       type: String,
       required: true,
     },
-    "state": {
+    state: {
       type: String,
       required: true,
     },
-    "country": {
+    country: {
       type: String,
       required: true,
     },
-    "zip_code": {
+    zip_code: {
       type: String,
       required: false,
     },
   },
   owner:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "users"
+    ref: users
   },
   type: {
-    "house": {
+    house: {
       type: Boolean,
       required: true,
     },
-    "apartment": {
+    apartment: {
       type: Boolean,
       required: true,
     },
-    "ranch": {
+    ranch: {
       type: Boolean,
       required: true,
     },
-    "Bed_&_Breakfast": {
+    Bed_and_Breakfast: {
       type: Boolean,
       required: true,
     }
   },
   privacy_type:{
-    "entire_place": {
+    entire_place: {
       type: Boolean,
       required: true,
     },
-    "private_room": {
+    private_room: {
       type: Boolean,
       required: true,
     },
-    "shared_room": {
+    shared_room: {
       type: Boolean,
       required: true,
     }
   },
   amenities:{
-    "beds":{
+    beds:{
       type: String,
       required: true,
     },
-    "kitchen":{
+    kitchen:{
       type: Array,
       of: String,
       required: true,
     },
-    "bathroom":{
+    bathroom:{
       type: Array,
       of: String,
       required: true,
     },
-    "bedroom_and_laundry":{
+    bedroom_and_laundry:{
       type: Array,
       of: String,
       required: true,
     },
-    "facilities":{
+    facilities:{
       type: Array,
       of: String,
       required: true,
     },
-    "entertaiment":{
+    entertaiment:{
       type: Array,
       of: String,
       required: true,
