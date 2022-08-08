@@ -12,7 +12,7 @@ function createSpace(space) {
   return Space.create(space)
 }
 
-function updateSPace(id, space) {
+function updateSpace(id, space) {
   return Space.findByIdAndUpdate(id, space, { new: true })
 }
 
@@ -24,4 +24,4 @@ exports.deleteSpace = deleteSpace
 exports.getAllSpaces = getAllSpaces
 exports.getSingleSpace = getSingleSpace
 exports.createSpace = createSpace
-exports.updateSPace = updateSPace
+exports.updateSpace = updateSpace

@@ -3,6 +3,7 @@ const {
   getAllUsers,
   getSingleUser,
   deleteUser,
+  updateUser,
 } = require('./users.services')
 
 async function getAllUsersHandler(req, res) {
@@ -40,7 +41,17 @@ async function createUserHandler(req, res) {
   }
 }
 
-function updateUserHandler(req, res) {}
+async function updateUserHandler(req, res) {
+  const { id } = req.params
+  const userData = req.body
+
+  try{
+    const user = await updateUser(id, userData)
+    return res.status(200).json(user)
+  }catch (error) {
+    return res.status(500).json({ error })
+  }
+}
 
 async function deleteUserHandler(req, res) {
   const { id } = req.params;
