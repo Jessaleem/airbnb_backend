@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 async function connectDB() {
-  const URI = process.env.MONGO_URI;
+  const URI = process.env.AIRBNB_MONGO_URI;
   try {
     await mongoose.connect(URI)
 
