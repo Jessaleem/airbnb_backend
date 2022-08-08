@@ -20,7 +20,7 @@ async function getSingleSpaceHandler(req, res) {
     const space = await getSingleSpace(id)
 
     if (!space) {
-      return res.status(404).json({ message: 'User not found' })
+      return res.status(404).json({ message: 'Space not found' })
     }
 
     return res.json(space)
