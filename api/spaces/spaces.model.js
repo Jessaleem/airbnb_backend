@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const SpaceSchema = new mongoose.Schema ({
+const spaceSchema = new mongoose.Schema ({
   title: {
     type: String,
     required: true,
@@ -25,7 +25,7 @@ const SpaceSchema = new mongoose.Schema ({
     street: {
       type: String,
       required: true,
-    }, 
+    },
     city: {
       type: String,
       required: true,
@@ -44,8 +44,7 @@ const SpaceSchema = new mongoose.Schema ({
     },
   },
   owner:{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: users
+    type: String,
   },
   type: {
     house: {
@@ -117,7 +116,7 @@ const SpaceSchema = new mongoose.Schema ({
 },
 {timestamps: true});
 
-const Space = mongoose.model("Space", SpaceSchema);
+const Space = mongoose.model("space", spaceSchema);
 
-module.exports = Space; 
+module.exports = Space;
 
