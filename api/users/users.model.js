@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema ({
     type: String,
     required: true,
   },
-  last_name: {
+  lastName: {
     type: String,
     required: true,
   },
@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema ({
       type: String,
       required: true,
     },
-    bank_account:{
+    bankAccount:{
       type: String,
       required: true,
     },
@@ -43,7 +43,8 @@ const userSchema = new mongoose.Schema ({
       required: true,
     },
   },
-})
+},
+{timestamps: true})
 
 const User = mongoose.model("user", userSchema);
 
