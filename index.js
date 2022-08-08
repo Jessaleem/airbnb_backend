@@ -1,10 +1,20 @@
-const connectDB = require('./database');
-const Space = require('./models/spaces');
+require('dotenv').config();
+const express = require('express');
 
+const configExpress = require('./config/database');
+const routes = require('./routes')
+const connectDB = require('./config/database');
 
-connectDB()
-  .then (async () => {
-    const createSpace = await Space.create({})
+const app = express()
 
-    console.log(createSpace)
-  })
+const PORT = process.env.EXPRESS_PORT || 8080
+
+app.listen(PORT, async () => {
+  configExpress(app)
+
+  await connectDB()
+
+  routes(app)
+
+  console.log(`Server running on port http://localhost:${PORT}`)
+});
