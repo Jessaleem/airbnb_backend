@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const spaceSchema = new mongoose.Schema ({
   title: {
     type: String,
-    required: true,
+    required:[true, "Is empty"],
   },
   img: {
     type: String,
-    required: true,
+    required:[true, "Is empty"],
   },
   dates: {
     type: Date,
@@ -15,11 +15,12 @@ const spaceSchema = new mongoose.Schema ({
   },
   price: {
     type: String,
-    required: true,
+    required:[true, "Is empty"],
   },
   howMany: {
-    type: String,
+    type: Number,
     required: true,
+    min: 1,
   },
   adress: {
     street: {
@@ -80,7 +81,8 @@ const spaceSchema = new mongoose.Schema ({
   },
   amenities:{
     beds:{
-      type: String,
+      type: Number,
+      default: 0,
       required: true,
     },
     kitchen:{
