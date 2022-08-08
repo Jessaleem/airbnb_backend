@@ -3,6 +3,7 @@ const {
   getAllSpaces,
   getSingleSpace,
   deleteSpace,
+  updateSpace,
 } = require('./spaces.services')
 
 async function getAllSpacesHandler(req, res) {
@@ -40,7 +41,17 @@ async function createSpaceHandler(req, res) {
   }
 }
 
-function updateSpaceHandler(req, res) {}
+async function updateSpaceHandler(req, res) {
+  const { id } = req.params
+  const spaceData = req.body
+
+  try{
+    const space = await updateSpace(id, spaceData)
+    return res.status(200).json(space)
+  }catch (error) {
+    return res.status(500).json({ error })
+  }
+}
 
 async function deleteSpaceHandler(req, res) {
   const { id } = req.params;
