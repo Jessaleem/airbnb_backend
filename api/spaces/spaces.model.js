@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const spaceSchema = new mongoose.Schema ({
   title: {
     type: String,
-    required: true,
+    required:[true, "Is empty"],
   },
   img: {
     type: String,
-    required: true,
+    required:[true, "Is empty"],
   },
   dates: {
     type: Date,
@@ -15,11 +15,12 @@ const spaceSchema = new mongoose.Schema ({
   },
   price: {
     type: String,
-    required: true,
+    required:[true, "Is empty"],
   },
-  how_many: {
-    type: String,
+  howMany: {
+    type: Number,
     required: true,
+    min: 1,
   },
   adress: {
     street: {
@@ -38,7 +39,7 @@ const spaceSchema = new mongoose.Schema ({
       type: String,
       required: true,
     },
-    zip_code: {
+    zipCode: {
       type: String,
       required: false,
     },
@@ -59,28 +60,29 @@ const spaceSchema = new mongoose.Schema ({
       type: Boolean,
       required: true,
     },
-    Bed_and_Breakfast: {
+    bedAndBreakfast: {
       type: Boolean,
       required: true,
     }
   },
-  privacy_type:{
-    entire_place: {
+  privacyType:{
+    entirePlace: {
       type: Boolean,
       required: true,
     },
-    private_room: {
+    privateRoom: {
       type: Boolean,
       required: true,
     },
-    shared_room: {
+    sharedRoom: {
       type: Boolean,
       required: true,
     }
   },
   amenities:{
     beds:{
-      type: String,
+      type: Number,
+      default: 0,
       required: true,
     },
     kitchen:{
@@ -93,7 +95,7 @@ const spaceSchema = new mongoose.Schema ({
       of: String,
       required: true,
     },
-    bedroom_and_laundry:{
+    bedroomAndLaundry:{
       type: Array,
       of: String,
       required: true,
