@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const reservationSchema = new mongoose.Schema({
+const ReservationSchema = new mongoose.Schema({
   space: {
     type: mongoose.Types.ObjectId,
     ref: 'Space',
@@ -42,4 +42,8 @@ const reservationSchema = new mongoose.Schema({
     ref: 'Pays',
     required: true,
   }
-})
+});
+
+const Reservation = mongoose.model("reservations", ReservationSchema);
+
+module.exports = Reservation;
