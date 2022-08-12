@@ -1,26 +1,25 @@
 const mongoose = require('mongoose');
 
-const spaceSchema = new mongoose.Schema ({
+const SpaceSchema = new mongoose.Schema ({
   title: {
     type: String,
-    required:[true, "Is empty"],
+    required: true,
   },
   img: {
     type: String,
-    required:[true, "Is empty"],
+    required: true,
   },
   dates: {
     type: Date,
     required: true,
   },
   price: {
-    type: String,
-    required:[true, "Is empty"],
-  },
-  howMany: {
     type: Number,
     required: true,
-    min: 1,
+  },
+  how_many: {
+    type: String,
+    required: true,
   },
   adress: {
     street: {
@@ -39,77 +38,61 @@ const spaceSchema = new mongoose.Schema ({
       type: String,
       required: true,
     },
-    zipCode: {
+    zip_code: {
       type: String,
       required: false,
     },
   },
-  owner:{
-    type: String,
+  host:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Users',
+    required: true
   },
   type: {
-    house: {
-      type: Boolean,
-      required: true,
-    },
-    apartment: {
-      type: Boolean,
-      required: true,
-    },
-    ranch: {
-      type: Boolean,
-      required: true,
-    },
-    bedAndBreakfast: {
-      type: Boolean,
-      required: true,
-    }
+    type: String,
+    enum: ['House', 'Apartment', 'Ranch', 'Bed and breakfast']
   },
-  privacyType:{
-    entirePlace: {
-      type: Boolean,
-      required: true,
-    },
-    privateRoom: {
-      type: Boolean,
-      required: true,
-    },
-    sharedRoom: {
-      type: Boolean,
-      required: true,
-    }
+  privacy_type:{
+    tupe: String,
+    enum: ['Entire place', 'Private room', 'Shared room']
   },
   amenities:{
-    beds:{
-      type: Number,
-      default: 0,
-      required: true,
-    },
-    kitchen:{
-      type: Array,
-      of: String,
-      required: true,
-    },
-    bathroom:{
-      type: Array,
-      of: String,
-      required: true,
-    },
-    bedroomAndLaundry:{
-      type: Array,
-      of: String,
-      required: true,
-    },
-    facilities:{
-      type: Array,
-      of: String,
-      required: true,
-    },
-    entertaiment:{
-      type: Array,
-      of: String,
-      required: true,
-    }
+    beds: [
+      {
+        type: String,
+        required: true,
+      }
+    ],
+    kitchen: [
+      {
+        type: String,
+        required: true,
+      }
+    ],
+    bathroom: [
+      {
+        type: String,
+        required: true,
+      }
+    ],
+    bedroom_and_laundry: [
+      {
+        type: String,
+        required: true,
+      }
+    ],
+    facilities: [
+      {
+        type: String,
+        required: true,
+      }
+    ],
+    entertaiment: [
+      {
+        type: String,
+        required: true,
+      }
+    ],
   },
   description:{
     type: String,
@@ -118,7 +101,6 @@ const spaceSchema = new mongoose.Schema ({
 },
 {timestamps: true});
 
-const Space = mongoose.model("space", spaceSchema);
+const Space = mongoose.model("space", SpaceSchema);
 
 module.exports = Space;
-
