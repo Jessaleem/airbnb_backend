@@ -6,7 +6,7 @@ const {
   updateUser,
 } = require('./users.services')
 
-async function getAllUsersHandler(req, res) {
+async function getAllUsersHandler(_, res) {
   try {
     const user = await getAllUsers()
     return res.status(200).json(user)
@@ -23,8 +23,8 @@ async function getSingleUserHandler(req, res) {
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
     }
-
-    return res.json(user)
+    const profile = user.profile
+    return res.json(profile)
   } catch (error) {
     return res.status(500).json({ error })
   }

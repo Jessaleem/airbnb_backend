@@ -1,23 +1,22 @@
 const mongoose = require('mongoose');
-const validate = require('mongoose-validator').validate;
 
-const userSchema = new mongoose.Schema ({
+const UserSchema = new mongoose.Schema ({
   name: {
     type: String,
-    required:[true, "Is empty"],
-    minlength:3,
+    required: true,
   },
   lastName: {
     type: String,
-    required:[true, "Is empty"],
+    required: true,
   },
   phone: {
-    type: Number,
-    required:[true, "Is empty"],
+    type: String,
+    required: true,
   },
   email: {
     type: String,
-    required:[true, "Is empty"],
+    required: true,
+    unique: true,
     lowercase: true,
   },
   gender: {
@@ -27,30 +26,44 @@ const userSchema = new mongoose.Schema ({
     type: String,
     required: true,
   },
-  photo: {
+  avatar: {
+    type: String,
+    default: 'https://res.cloudinary.com/equipo-maravilla/image/upload/v1659716563/images/Account/Userlogo_pyxlip.png'
+  },
+  role: {
+    type: String,
+    enum: ['user', 'host', 'admin'],
+    default: 'user',
+  },
+  isActive: {
+    type: Boolean,
+    default: false,
+  },
+  bankAccount: {
     type: String,
     required: true,
   },
-  private: {
-    password:{
-      type: String,
-      required: true,
-      minlength: 8,
-    },
-    bankAccount:{
-      type: String,
-      required: true,
-    },
-    date:{
-      type: Date,
-      required: false,
-      min: Date.now - 18 * 12 * 30 * 24 * 60 * 60 * 1000,
-      max: Date.now + 80 * 24 * 60 * 60 * 1000,
-    },
+  birthDate: {
+    type: Date,
+    required: true,
   },
-},
-{timestamps: true})
+}, {timestamps: true})
 
-const User = mongoose.model("user", userSchema);
+UserSchema.virtual('password').get(function() {
+  return this.password
+})
+
+UserSchema.virtual('profile').get(function() {
+  const { name, lastName, email, role } = this
+
+  return {
+    name,
+    lastName,
+    email,
+    role,
+  }
+});
+
+const User = mongoose.model("user", UserSchema);
 
 module.exports = User;
