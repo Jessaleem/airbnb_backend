@@ -16,16 +16,16 @@ const ReservationSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  dates: [{
+  dates: {
     arrive: {
-      tipe: Date,
+      type: Date,
       required: true,
     },
     departure: {
-      tipe: Date,
+      type: Date,
       required: true,
     }
-  }],
+  },
   howMany: {
     children: {
       type: Number,
