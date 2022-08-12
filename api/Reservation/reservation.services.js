@@ -1,4 +1,4 @@
-const Reservation = require('./spaces.model')
+const Reservation = require('./reservation.model')
 
 function getAllReservations() {
   return Reservation.find({})
