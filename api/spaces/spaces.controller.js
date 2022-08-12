@@ -68,8 +68,10 @@ async function deleteSpaceHandler(req, res) {
   }
 }
 
-exports.getSingleSpaceHandler = getSingleSpaceHandler
-exports.getAllSpacesHandler = getAllSpacesHandler
-exports.createSpaceHandler = createSpaceHandler
-exports.deleteSpaceHandler = deleteSpaceHandler
-exports.updateSpaceHandler = updateSpaceHandler
+module.exports = {
+  getAllSpacesHandler,
+  createSpaceHandler,
+  updateSpaceHandler,
+  deleteSpaceHandler,
+  getSingleSpaceHandler
+}

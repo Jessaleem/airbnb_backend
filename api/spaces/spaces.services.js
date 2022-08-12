@@ -20,8 +20,10 @@ function deleteSpace(id) {
   return Space.findByIdAndRemove(id)
 }
 
-exports.deleteSpace = deleteSpace
-exports.getAllSpaces = getAllSpaces
-exports.getSingleSpace = getSingleSpace
-exports.createSpace = createSpace
-exports.updateSpace = updateSpace
+module.exports = {
+  getAllSpaces,
+  getSingleSpace,
+  createSpace,
+  updateSpace,
+  deleteSpace
+}

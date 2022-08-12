@@ -20,8 +20,10 @@ function deleteUser(id) {
   return User.findByIdAndRemove(id)
 }
 
-exports.deleteUser = deleteUser
-exports.getAllUsers = getAllUsers
-exports.getSingleUser = getSingleUser
-exports.createUser = createUser
-exports.updateUser = updateUser
+module.exports = {
+  getAllUsers,
+  getSingleUser,
+  createUser,
+  updateUser,
+  deleteUser
+}

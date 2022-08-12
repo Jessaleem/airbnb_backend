@@ -6,6 +6,7 @@ function routes(app) {
   app.use('/api/healthcheck', router);
   app.use('/api/spaces', space);
   app.use('/api/users', user);
+  app.use('/api/reservation', reservation);
 }
 
 module.exports = routes;
