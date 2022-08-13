@@ -1,24 +1,26 @@
-const Space = require('./spaces.model')
+const Space = require('./spaces.model');
 
 function getAllSpaces() {
   return Space.find({})
-}
+  .populate('host');
+};
 
 function getSingleSpace(id) {
   return Space.findById(id)
-}
+  .populate('host');
+};
 
 function createSpace(space) {
-  return Space.create(space)
-}
+  return Space.create(space);
+};
 
 function updateSpace(id, space) {
-  return Space.findByIdAndUpdate(id, space, { new: true })
-}
+  return Space.findByIdAndUpdate(id, space, { new: true });
+};
 
 function deleteSpace(id) {
-  return Space.findByIdAndRemove(id)
-}
+  return Space.findByIdAndRemove(id);
+};
 
 module.exports = {
   getAllSpaces,
@@ -26,4 +28,4 @@ module.exports = {
   createSpace,
   updateSpace,
   deleteSpace
-}
+};

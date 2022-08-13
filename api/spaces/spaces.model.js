@@ -17,7 +17,7 @@ const SpaceSchema = new mongoose.Schema ({
     type: Number,
     required: true,
   },
-  how_many: {
+  howMany: {
     type: String,
     required: true,
   },
@@ -38,7 +38,7 @@ const SpaceSchema = new mongoose.Schema ({
       type: String,
       required: true,
     },
-    zip_code: {
+    zipCode: {
       type: String,
       required: false,
     },
@@ -52,17 +52,15 @@ const SpaceSchema = new mongoose.Schema ({
     type: String,
     enum: ['House', 'Apartment', 'Ranch', 'Bed and breakfast']
   },
-  privacy_type:{
+  privacyType:{
     tupe: String,
     enum: ['Entire place', 'Private room', 'Shared room']
   },
   amenities:{
-    beds: [
-      {
+    beds: {
         type: String,
         required: true,
-      }
-    ],
+      },
     kitchen: [
       {
         type: String,
@@ -75,7 +73,7 @@ const SpaceSchema = new mongoose.Schema ({
         required: true,
       }
     ],
-    bedroom_and_laundry: [
+    bedroomAndLaundry: [
       {
         type: String,
         required: true,
