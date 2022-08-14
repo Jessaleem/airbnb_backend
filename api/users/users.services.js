@@ -8,6 +8,10 @@ function getSingleUser(id) {
   return User.findById(id);
 }
 
+function findUserByEmail(email) {
+  return User.findOne({ email });
+}
+
 function createUser(user) {
   return User.create(user);
 }
@@ -26,4 +30,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  findUserByEmail,
 };
