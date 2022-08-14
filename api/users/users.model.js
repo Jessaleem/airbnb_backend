@@ -47,11 +47,16 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  password: {
+    type: String,
+    required: true,
+    minlength: 8,
+  },
 }, { timestamps: true });
 
-UserSchema.virtual('password').get(function () {
-  return this.password;
-});
+// UserSchema.virtual('password').get(function () {
+//   return this.password;
+// });
 
 UserSchema.virtual('profile').get(function () {
   const {
