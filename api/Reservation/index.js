@@ -1,12 +1,12 @@
 const Router = require('express');
 
-const{
+const {
   createReservationHandler,
   updateReservationHandler,
   deleteReservationHandler,
   getAllReservationHandler,
   getSingleReservationHandler,
-} = require('./reservation.controller')
+} = require('./reservation.controller');
 
 const router = Router();
 

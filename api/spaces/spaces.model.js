@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const SpaceSchema = new mongoose.Schema ({
+const SpaceSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -43,62 +43,61 @@ const SpaceSchema = new mongoose.Schema ({
       required: false,
     },
   },
-  host:{
+  host: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Users',
-    required: true
+    ref: 'user',
+    required: true,
   },
   type: {
     type: String,
-    enum: ['House', 'Apartment', 'Ranch', 'Bed and breakfast']
+    enum: ['House', 'Apartment', 'Ranch', 'Bed and breakfast'],
   },
-  privacyType:{
+  privacyType: {
     tupe: String,
-    enum: ['Entire place', 'Private room', 'Shared room']
+    enum: ['Entire place', 'Private room', 'Shared room'],
   },
-  amenities:{
+  amenities: {
     beds: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      required: true,
+    },
     kitchen: [
       {
         type: String,
         required: true,
-      }
+      },
     ],
     bathroom: [
       {
         type: String,
         required: true,
-      }
+      },
     ],
     bedroomAndLaundry: [
       {
         type: String,
         required: true,
-      }
+      },
     ],
     facilities: [
       {
         type: String,
         required: true,
-      }
+      },
     ],
     entertaiment: [
       {
         type: String,
         required: true,
-      }
+      },
     ],
   },
-  description:{
+  description: {
     type: String,
     required: true,
-  }
-},
-{timestamps: true});
+  },
+}, { timestamps: true });
 
-const Space = mongoose.model("space", SpaceSchema);
+const Space = mongoose.model('space', SpaceSchema);
 
 module.exports = Space;

@@ -6,7 +6,7 @@ const ReservationSchema = new mongoose.Schema({
     ref: 'Space',
     required: true,
   },
-  host:{
+  host: {
     type: mongoose.Types.ObjectId,
     ref: 'Host',
     required: true,
@@ -24,7 +24,7 @@ const ReservationSchema = new mongoose.Schema({
     departure: {
       type: Date,
       required: true,
-    }
+    },
   },
   howMany: {
     children: {
@@ -35,15 +35,15 @@ const ReservationSchema = new mongoose.Schema({
     },
     pets: {
       type: Number,
-    }
+    },
   },
   pays: {
     type: mongoose.Types.ObjectId,
     ref: 'Pays',
     required: true,
-  }
+  },
 });
 
-const Reservation = mongoose.model("reservations", ReservationSchema);
+const Reservation = mongoose.model('reservations', ReservationSchema);
 
 module.exports = Reservation;

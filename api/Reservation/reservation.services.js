@@ -1,23 +1,23 @@
-const Reservation = require('./reservation.model')
+const Reservation = require('./reservation.model');
 
 function getAllReservations() {
-  return Reservation.find({})
+  return Reservation.find({});
 }
 
 function getSingleReservation(id) {
-  return Reservation.findById(id)
+  return Reservation.findById(id);
 }
 
 function createReservation(reservation) {
-  return Reservation.create(reservation)
+  return Reservation.create(reservation);
 }
 
 function updateReservation(id, reservation) {
-  return Reservation.findByIdAndUpdate(id, reservation, { new: true })
+  return Reservation.findByIdAndUpdate(id, reservation, { new: true });
 }
 
 function deleteReservation(id) {
-  return Reservation.findByIdAndRemove(id)
+  return Reservation.findByIdAndRemove(id);
 }
 
 module.exports = {
@@ -26,4 +26,4 @@ module.exports = {
   createReservation,
   updateReservation,
   deleteReservation,
-}
+};

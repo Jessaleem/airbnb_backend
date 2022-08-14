@@ -1,7 +1,7 @@
 const router = require('./api/healthcheck/index');
 const space = require('./api/spaces/index');
 const user = require('./api/users/index');
-const  reservation = require('./api/reservation/index');
+const reservation = require('./api/reservation/index');
 
 function routes(app) {
   app.use('/api/healthcheck', router);

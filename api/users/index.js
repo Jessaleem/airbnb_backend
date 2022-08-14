@@ -1,12 +1,12 @@
 const Router = require('express');
 
-const{
+const {
   getAllUsersHandler,
   getSingleUserHandler,
   createUserHandler,
   deleteUserHandler,
   updateUserHandler,
-} = require('./users.controller')
+} = require('./users.controller');
 
 const router = Router();
 
