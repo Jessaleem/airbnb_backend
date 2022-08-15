@@ -51,6 +51,7 @@ const SpaceSchema = new mongoose.Schema({
   type: {
     type: String,
     enum: ['House', 'Apartment', 'Ranch', 'Bed and breakfast'],
+    default: 'House',
   },
   privacyType: {
     tupe: String,
