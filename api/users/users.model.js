@@ -39,10 +39,6 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  bankAccount: {
-    type: String,
-    required: true,
-  },
   birthDate: {
     type: Date,
     required: true,

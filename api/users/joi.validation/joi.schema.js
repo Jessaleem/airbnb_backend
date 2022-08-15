@@ -3,7 +3,7 @@ const Joi = require('joi');
 const today = Date.now();
 const cutoffDate = new Date(today - (18 * 365 * 24 * 60 * 60 * 1000));
 
-const schema = Joi.object({
+const userSchema = Joi.object({
   name:
     Joi.string()
       .required(),
@@ -16,8 +16,7 @@ const schema = Joi.object({
   email:
     Joi.string()
       .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
-      .required()
-      .case('lower'),
+      .required(),
   gender:
     Joi.string()
       .default('other'),
@@ -32,12 +31,9 @@ const schema = Joi.object({
       .default('guest')
       .valid('guest', 'host', 'admin')
       .required(),
-  isActive:
-    Joi.boolean()
-      .default(false),
   birthDate:
     Joi.date()
-      .min(cutoffDate)
+      .max(cutoffDate)
       .required(),
   password:
     Joi.string()
@@ -46,4 +42,4 @@ const schema = Joi.object({
       .required(),
 });
 
-module.exports = schema;
+module.exports = userSchema;
