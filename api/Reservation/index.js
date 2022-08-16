@@ -1,4 +1,6 @@
 const Router = require('express');
+const { isAuthenticated } = require('../../auth/auth.service');
+const { reservationValidator, reservationUpdateValidator } = require('./joi.validation/joi.validator');
 
 const {
   createReservationHandler,
@@ -11,9 +13,9 @@ const {
 const router = Router();
 
 router.get('/', getAllReservationHandler);
-router.post('/', createReservationHandler);
+router.post('/', isAuthenticated, reservationValidator, createReservationHandler);
 router.get('/:id', getSingleReservationHandler);
-router.patch('/:id', updateReservationHandler);
+router.patch('/:id', isAuthenticated, reservationUpdateValidator, updateReservationHandler);
 router.delete('/:id', deleteReservationHandler);
 
 module.exports = router;
