@@ -32,23 +32,21 @@ const reservationUpdateSchema = Joi.object({
     arrive:
     Joi.date()
       .min(arriveDate)
-      .allow(''),
+      .required(),
     departure:
     Joi.date()
       .min(departureDate)
-      .allow(''),
+      .required(),
   },
   howMany: {
     children:
-    Joi.number()
-      .allow(''),
+    Joi.number(),
     adults:
     Joi.number()
       .min(1)
-      .allow(''),
+      .required(),
     pets:
-    Joi.number()
-      .allow(''),
+    Joi.number(),
   },
 });
 
