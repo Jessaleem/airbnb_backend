@@ -9,13 +9,12 @@ async function loginUserHandler(req, res) {
     if (!user) {
       return res.status(404).json({ message: 'Email or password incorrect' });
     }
-
     const isMatch = await user.comparePassword(password);
+
     if (!isMatch) {
       return res.status(404).json({ message: 'Email or password incorrect' });
     }
-
-    const token = signToken({ email: user.email });
+    const token = await signToken({ email: user.email });
     return res.status(200).json({ token, profile: user.profile });
   } catch (error) {
     return res.status(500).json({ error });
