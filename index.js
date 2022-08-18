@@ -2,19 +2,19 @@ require('dotenv').config();
 const express = require('express');
 
 const configExpress = require('./config/express');
-const routes = require('./routes')
+const routes = require('./routes');
 const connectDB = require('./config/database');
 
-const app = express()
+const app = express();
 
-const PORT = process.env.AIRBNB_EXPRESS_PORT || 8080
+const PORT = process.env.AIRBNB_EXPRESS_PORT || 8080;
 
 app.listen(PORT, async () => {
-  configExpress(app)
+  configExpress(app);
 
-  await connectDB()
+  await connectDB();
 
-  routes(app)
+  routes(app);
 
-  console.log(`Server running on port http://localhost:${PORT}`)
+  console.log(`Server running on port http://localhost:${PORT}`);
 });

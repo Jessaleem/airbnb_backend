@@ -1,27 +1,34 @@
-const User = require('./users.model')
+const User = require('./users.model');
 
 function getAllUsers() {
-  return User.find({})
+  return User.find({});
 }
 
 function getSingleUser(id) {
-  return User.findById(id)
+  return User.findById(id);
+}
+
+function findUserByEmail(email) {
+  return User.findOne({ email });
 }
 
 function createUser(user) {
-  return User.create(user)
+  return User.create(user);
 }
 
 function updateUser(id, user) {
-  return User.findByIdAndUpdate(id, user, { new: true })
+  return User.findByIdAndUpdate(id, user, { new: true });
 }
 
 function deleteUser(id) {
-  return User.findByIdAndRemove(id)
+  return User.findByIdAndRemove(id);
 }
 
-exports.deleteUser = deleteUser
-exports.getAllUsers = getAllUsers
-exports.getSingleUser = getSingleUser
-exports.createUser = createUser
-exports.updateUser = updateUser
+module.exports = {
+  getAllUsers,
+  getSingleUser,
+  createUser,
+  updateUser,
+  deleteUser,
+  findUserByEmail,
+};
