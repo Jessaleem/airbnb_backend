@@ -36,11 +36,11 @@ const spaceSchema = Joi.object({
     .required(),
   type:
     Joi.string()
-      .valid('House', 'Apartment', 'Ranch', 'Bed and Brackfast')
-      .default('House'),
+      .valid('HOUSE', 'APARTMENT', 'RANCH', 'BED_AND_BREAKFAST')
+      .default('HOUSE'),
   privacyType:
   Joi.string()
-    .valid('Entire place', 'Private room', 'Shared room'),
+    .valid('ENTIRE_PLACE', 'PRIVATE_ROOM', 'SHARED_ROOM'),
   amenities:
     Joi.object({
       beds:

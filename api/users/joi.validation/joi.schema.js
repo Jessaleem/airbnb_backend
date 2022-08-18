@@ -28,8 +28,8 @@ const userSchema = Joi.object({
       .default('https://res.cloudinary.com/equipo-maravilla/image/upload/v1659716563/images/Account/Userlogo_pyxlip.png'),
   role:
     Joi.string()
-      .default('guest')
-      .valid('guest', 'host', 'admin')
+      .default('GUEST')
+      .valid('GUEST', 'HOST', 'ADMIN')
       .required(),
   birthDate:
     Joi.date()
