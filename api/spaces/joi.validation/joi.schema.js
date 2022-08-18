@@ -7,7 +7,7 @@ const spaceSchema = Joi.object({
   img:
   Joi.string(),
   date:
-  Joi.string()
+  Joi.date()
     .required(),
   price:
   Joi.number()
@@ -33,9 +33,6 @@ const spaceSchema = Joi.object({
     Joi.string()
       .required(),
   })
-    .required(),
-  host:
-  Joi.string()
     .required(),
   type:
     Joi.string()

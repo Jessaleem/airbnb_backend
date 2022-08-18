@@ -32,9 +32,11 @@ async function getSingleSpaceHandler(req, res) {
 
 async function createSpaceHandler(req, res) {
   const spaceData = req.body;
+  const { _id } = req.user;
+  console.log('🚀 ~ file: spaces.controller.js ~ line 36 ~ createSpaceHandler ~ _id', _id);
 
   try {
-    const space = await createSpace(spaceData);
+    const space = await createSpace({ ...spaceData, host: _id });
     return res.status(201).json(space);
   } catch (error) {
     return res.status(500).json({ error });
