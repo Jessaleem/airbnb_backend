@@ -1,5 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 const jsonToken = require('jsonwebtoken');
 const { findUserByEmail } = require('../api/users/users.services');
+const User = require('../api/users/users.model');
 
 async function signToken(payload) {
   const token = await jsonToken.sign(
@@ -7,7 +9,7 @@ async function signToken(payload) {
     process.env.JSW_KET_WORD,
     { expiresIn: '1h' },
   );
-
+  console.log(token);
   return token;
 }
 
@@ -30,7 +32,6 @@ async function isAuthenticated(req, res, next) {
   const token = authHeader.split(' ')[1];
 
   const decoded = await verfyToken(token);
-
   if (!decoded) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
@@ -48,8 +49,27 @@ async function isAuthenticated(req, res, next) {
   return true;
 }
 
+function verifyRole(roles) {
+  return async (req, res, next) => {
+    try {
+      const { role } = req.user;
+      if ([].concat(roles).includes(role)) {
+        next();
+      } else {
+        res.status(409);
+        res.send({ error: 'Not authorized' });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(409);
+      res.send({ error: 'Not authorized' });
+    }
+  };
+}
+
 module.exports = {
   signToken,
   verfyToken,
   isAuthenticated,
+  verifyRole,
 };
