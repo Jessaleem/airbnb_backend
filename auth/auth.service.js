@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const jsonToken = require('jsonwebtoken');
 const { findUserByEmail } = require('../api/users/users.services');
-const User = require('../api/users/users.model');
 
 async function signToken(payload) {
   const token = await jsonToken.sign(
