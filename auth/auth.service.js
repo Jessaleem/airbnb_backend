@@ -8,7 +8,6 @@ async function signToken(payload) {
     process.env.JSW_KET_WORD,
     { expiresIn: '1h' },
   );
-  console.log(token);
   return token;
 }
 
@@ -59,7 +58,6 @@ function verifyRole(roles) {
         res.send({ error: 'Not authorized' });
       }
     } catch (error) {
-      console.log(error);
       res.status(409);
       res.send({ error: 'Not authorized' });
     }
