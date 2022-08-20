@@ -50,6 +50,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
   },
+  passwordResetToken: String,
+  passwordResetExpires: Date,
 }, { timestamps: true });
 
 // UserSchema.virtual('password').get(function () {
