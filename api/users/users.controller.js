@@ -5,6 +5,7 @@ const {
   deleteUser,
   updateUser,
 } = require('./users.services');
+const { sendNodemailer } = require('../../utils/mail');
 
 async function getAllUsersHandler(_, res) {
   try {
@@ -35,6 +36,20 @@ async function createUserHandler(req, res) {
 
   try {
     const user = await createUser(userData);
+    // Send email to user
+    const message = {
+      from: '"no-replay" <airbclone@gmail.com>', // sender address
+      to: user.email, // list of receivers
+      subject: 'Please meditate', // Subject line
+      text: 'At leats 30 min daily', // plain text body
+      html: `
+      <h1>Om Namo Narayanaya</h1>
+      <a href=${process.env.URL} target="_blank" rel="no referer"> Register </a>
+      `, // html body
+    };
+    console.log('🚀 ~ file: users.controller.js ~ line 43 ~ createUserHandler ~ email', user.email);
+
+    await sendNodemailer(message);
     return res.status(201).json(user);
   } catch (error) {
     return res.status(500).json({ error });
