@@ -20,9 +20,9 @@ const userSchema = Joi.object({
   gender:
     Joi.string()
       .default('other'),
-  about:
-    Joi.string()
-      .required(),
+  // about:
+  //   Joi.string(),
+  //     // .required(),
   avatar:
     Joi.string()
       .default('https://res.cloudinary.com/equipo-maravilla/image/upload/v1659716563/images/Account/Userlogo_pyxlip.png'),
