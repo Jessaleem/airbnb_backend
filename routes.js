@@ -3,6 +3,7 @@ const space = require('./api/spaces/index');
 const user = require('./api/users/index');
 const reservation = require('./api/Reservation/index');
 const authLocal = require('./auth/local');
+const upload = require('./api/upload');
 
 function routes(app) {
   app.use('/api/healthcheck', router);
@@ -11,6 +12,8 @@ function routes(app) {
   app.use('/api/reservation', reservation);
 
   app.use('/auth/local', authLocal);
+
+  app.use('/api/upload', upload);
 }
 
 module.exports = routes;
