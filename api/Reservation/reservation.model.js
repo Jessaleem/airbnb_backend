@@ -3,17 +3,12 @@ const mongoose = require('mongoose');
 const ReservationSchema = new mongoose.Schema({
   space: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Space',
-    required: true,
-  },
-  host: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Host',
+    ref: 'space',
     required: true,
   },
   guest: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Guest',
+    ref: 'user',
     required: true,
   },
   dates: {

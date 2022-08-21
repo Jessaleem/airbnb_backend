@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -33,8 +34,8 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ['guest', 'host', 'admin'],
-    default: 'guest',
+    enum: ['GUEST', 'HOST', 'ADMIN'],
+    default: 'GUEST',
   },
   isActive: {
     type: Boolean,
@@ -49,6 +50,8 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
   },
+  passwordResetToken: String,
+  passwordResetExpires: Date,
 }, { timestamps: true });
 
 // UserSchema.virtual('password').get(function () {
