@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const {
   createUser,
   getAllUsers,
@@ -35,6 +36,12 @@ async function createUserHandler(req, res) {
   const userData = req.body;
 
   try {
+    const hash = crypto.createHash('sha256')
+      .update(userData.email)
+      .digest('hex');
+
+    userData.passwordResetToken = hash;
+    userData.passwordResetExpires = Date.now() + 3_600_000 * 3;
     const user = await createUser(userData);
     // Send email to user
     const message = {
@@ -44,15 +51,14 @@ async function createUserHandler(req, res) {
       text: 'At leats 30 min daily', // plain text body
       html: `
       <h1>Om Namo Narayanaya</h1>
-      <a href=${process.env.URL} target="_blank" rel="no referer"> Register </a>
+      <a href="http://localhost:3000/verifyAccount/${hash}" target="_blank" rel="no referer"> Register </a>
       `, // html body
     };
-    console.log('🚀 ~ file: users.controller.js ~ line 43 ~ createUserHandler ~ email', user.email);
 
     await sendNodemailer(message);
     return res.status(201).json(user);
   } catch (error) {
-    return res.status(500).json({ error });
+    return res.status(500).json({ error: error.message });
   }
 }
 
