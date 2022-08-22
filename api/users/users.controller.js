@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const {
   createUser,
   getAllUsers,
@@ -5,6 +6,7 @@ const {
   deleteUser,
   updateUser,
 } = require('./users.services');
+const { sendNodemailer } = require('../../utils/mail');
 
 async function getAllUsersHandler(_, res) {
   try {
@@ -34,10 +36,27 @@ async function createUserHandler(req, res) {
   const userData = req.body;
 
   try {
+    const hash = crypto.createHash('sha256')
+      .update(userData.email)
+      .digest('hex');
+
+    userData.passwordResetToken = hash;
+    userData.passwordResetExpires = Date.now() + 3_600_000 * 3;
     const user = await createUser(userData);
+    const message = {
+      from: '"no-replay" <airbclone@gmail.com>',
+      to: user.email,
+      subject: 'Activate your account',
+      html: `
+      <h1>Hello, ${user.name}</h1>
+      <a href="http://localhost:3000/verifyAccount/${hash}" target="_blank" rel="no referer"> <h3>Click me!</h3> </a>
+      `,
+    };
+
+    await sendNodemailer(message);
     return res.status(201).json(user);
   } catch (error) {
-    return res.status(500).json({ error });
+    return res.status(500).json({ error: error.message });
   }
 }
 
