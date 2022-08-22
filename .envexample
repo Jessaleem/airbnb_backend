@@ -1,0 +1,10 @@
+#airbnb db
+AIRBNB_MONGO_URI =
+PORT =
+JSW_KET_WORD =
+
+# mailer
+SMTP_PASSWORD =
+SMTP_USER = airbclone@gmail.com
+SMTP_HOST = smtp.gmail.com
+SMTP_PORT = 465

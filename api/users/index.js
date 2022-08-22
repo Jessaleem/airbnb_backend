@@ -11,7 +11,7 @@ const {
 
 const router = Router();
 
-router.get('/', isAuthenticated, getAllUsersHandler);
+router.get('/', getAllUsersHandler);
 router.post('/', userValidator, createUserHandler);
 router.get('/:id', isAuthenticated, getSingleUserHandler);
 router.patch('/:id', isAuthenticated, updateUserHandler);
