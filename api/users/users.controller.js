@@ -43,16 +43,14 @@ async function createUserHandler(req, res) {
     userData.passwordResetToken = hash;
     userData.passwordResetExpires = Date.now() + 3_600_000 * 3;
     const user = await createUser(userData);
-    // Send email to user
     const message = {
-      from: '"no-replay" <airbclone@gmail.com>', // sender address
-      to: user.email, // list of receivers
-      subject: 'Please meditate', // Subject line
-      text: 'At leats 30 min daily', // plain text body
+      from: '"no-replay" <airbclone@gmail.com>',
+      to: user.email,
+      subject: 'Activate your account',
       html: `
-      <h1>Om Namo Narayanaya</h1>
-      <a href="http://localhost:3000/verifyAccount/${hash}" target="_blank" rel="no referer"> Register </a>
-      `, // html body
+      <h1>Hello, ${user.name}</h1>
+      <a href="http://localhost:3000/verifyAccount/${hash}" target="_blank" rel="no referer"> <h3>Click me!</h3> </a>
+      `,
     };
 
     await sendNodemailer(message);
