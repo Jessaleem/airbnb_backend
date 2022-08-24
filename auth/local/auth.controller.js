@@ -25,7 +25,6 @@ async function verifyAccountHandler(req, res) {
   const { token } = req.params;
   try {
     const user = await findOneUser({ passwordResetToken: token });
-
     if (!user) {
       return res.status(404).json({ message: 'Invalid token' });
     }
@@ -39,7 +38,6 @@ async function verifyAccountHandler(req, res) {
     user.isActive = true;
 
     await user.save();
-
     const jwtoken = signToken({ email: user.email });
 
     return res.status(200).json({
