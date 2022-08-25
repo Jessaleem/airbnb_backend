@@ -2,9 +2,10 @@ const crypto = require('crypto');
 const {
   createUser,
   getAllUsers,
-  getSingleUser,
   deleteUser,
   updateUser,
+  findOneUser,
+  findUserByEmail,
 } = require('./users.services');
 const { sendNodemailer } = require('../../utils/mail');
 
@@ -18,9 +19,9 @@ async function getAllUsersHandler(_, res) {
 }
 
 async function getSingleUserHandler(req, res) {
-  const { id } = req.params;
+  const { token } = req.params;
   try {
-    const user = await getSingleUser(id);
+    const user = await findOneUser({ passwordResetToken: token });
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -28,6 +29,7 @@ async function getSingleUserHandler(req, res) {
     const { profile } = user;
     return res.json(profile);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error });
   }
 }
@@ -41,7 +43,7 @@ async function createUserHandler(req, res) {
       .digest('hex');
 
     userData.passwordResetToken = hash;
-    userData.passwordResetExpires = Date.now() + 3_600_000 * 3;
+    userData.passwordResetExpires = Date.now() + 3_600_000 * 24;
     const user = await createUser(userData);
     const message = {
       from: '"no-replay" <airbclone@gmail.com>',
@@ -87,10 +89,17 @@ async function deleteUserHandler(req, res) {
   }
 }
 
+async function meUserHandler(req, res) {
+  const { user } = req;
+  const result = await findUserByEmail(user.email);
+  return res.json(result);
+}
+
 module.exports = {
   getAllUsersHandler,
   createUserHandler,
   updateUserHandler,
   deleteUserHandler,
   getSingleUserHandler,
+  meUserHandler,
 };
