@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 async function handlerCheckout(req, res) {
   const { paymentMethod, amount } = req.body;
 
-  const { id } = paymentMethod;
+  const { id, card } = paymentMethod;
 
   try {
     const payment = await stripe.paymentIntents.create({
@@ -16,9 +16,9 @@ async function handlerCheckout(req, res) {
       description: 'Example charge - Top v23',
     });
 
-    return res.json({ message: 'success', payment });
+    return res.json({ message: 'success', payment, card });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ '[message]': error.message });
   }
 }
 
