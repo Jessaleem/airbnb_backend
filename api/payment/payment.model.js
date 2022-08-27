@@ -1,20 +1,31 @@
 const mongoose = require('mongoose');
 
-const payment = new mongoose.Schema({
-  customeId: String,
-  card: [
-    {
-      paymentMethodId: String,
-      brand: String,
-      country: String,
-      expMonth: String,
-      expYear: String,
-      funding: String,
-      last4: String,
-    },
-  ],
+const paymentSchema = new mongoose.Schema({
+  refId: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    uppercase: true,
+    required: true,
+  },
+  value: {
+    type: Number,
+    required: true,
+  },
+  currency: {
+    type: String,
+    trim: true,
+    uppercase: true,
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
+  },
 });
 
-const checkOut = mongoose.Model('payment', payment);
+const payment = mongoose.Model('payment', paymentSchema);
 
-module.exports = checkOut;
+module.exports = payment;
