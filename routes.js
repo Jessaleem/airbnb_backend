@@ -12,7 +12,7 @@ function routes(app) {
   app.use('/api/reservation', reservation);
 
   app.use('/auth/local', authLocal);
-  app.use('/api/checkout', payment);
+  app.use('/api/payment', payment);
 }
 
 module.exports = routes;

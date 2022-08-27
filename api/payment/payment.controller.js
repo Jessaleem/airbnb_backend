@@ -1,24 +1,20 @@
-const Stripe = require('stripe');
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+/* eslint-disable no-unused-vars */
+const {
+  makePayment,
+  createPayment,
+} = require('./payment.service');
 
 async function handlerPayment(req, res) {
+  const { user } = req;
   const { paymentMethod, amount } = req.body;
-
-  const { id, card } = paymentMethod;
-
+  if (!user?.payment?.customerId) {
+    res.json({ message: 'Create new user' });
+    return;
+  }
   try {
-    const payment = await stripe.paymentIntents.create({
-      payment_method: id,
-      amount,
-      currency: 'usd',
-      confirm: true,
-      description: 'Example charge - Top v23',
-    });
-
-    return res.json({ message: 'success', payment, card });
+    res.json({ amount, user });
   } catch (error) {
-    return res.status(500).json({ '[message]': error.message });
+    res.status(500).json({ '[ERROR': error.message });
   }
 }
 
