@@ -2,7 +2,7 @@ const Stripe = require('stripe');
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-async function handlerCheckout(req, res) {
+async function handlerPayment(req, res) {
   const { paymentMethod, amount } = req.body;
 
   const { id, card } = paymentMethod;
@@ -22,4 +22,4 @@ async function handlerCheckout(req, res) {
   }
 }
 
-module.exports = handlerCheckout;
+module.exports = handlerPayment;
