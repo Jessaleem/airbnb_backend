@@ -2,6 +2,21 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+const Payment = new mongoose.Schema({
+  customerId: String,
+  cards: [
+    {
+      paymentMethodId: String,
+      brand: String,
+      country: String,
+      expMonth: Number,
+      expYear: Number,
+      funding: String,
+      last4: String,
+    },
+  ],
+});
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -49,13 +64,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
   },
+  payment: Payment,
   passwordResetToken: String,
   passwordResetExpires: Date,
 }, { timestamps: true });
-
-// UserSchema.virtual('password').get(function () {
-//   return this.password;
-// });
 
 UserSchema.virtual('profile').get(function () {
   const {
