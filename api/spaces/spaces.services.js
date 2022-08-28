@@ -6,7 +6,7 @@ function getAllSpaces() {
 
 function getSingleSpace(id) {
   return Space.findById(id)
-    .populate('host');
+    .populate({ path: 'users', select: 'role' });
 }
 
 function createSpace(space) {

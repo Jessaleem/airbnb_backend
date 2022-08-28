@@ -26,6 +26,7 @@ const UserSchema = new mongoose.Schema({
   },
   about: {
     type: String,
+    default: 'Something about yourself',
   },
   avatar: {
     type: String,
@@ -48,6 +49,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 8,
+  },
+  location: {
+    type: String,
+  },
+  languajes: {
+    type: String,
+  },
+  reviews: {
+    type: String,
   },
   passwordResetToken: String,
   passwordResetExpires: Date,
