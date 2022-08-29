@@ -7,13 +7,15 @@ const {
   createUserHandler,
   deleteUserHandler,
   updateUserHandler,
+  meUserHandler,
 } = require('./users.controller');
 
 const router = Router();
 
 router.get('/', getAllUsersHandler);
 router.post('/', userValidator, createUserHandler);
-router.get('/:id', isAuthenticated, getSingleUserHandler);
+router.get('/me', isAuthenticated, meUserHandler);
+router.get('/:id', getSingleUserHandler);
 router.patch('/:id', isAuthenticated, updateUserHandler);
 router.delete('/:id', isAuthenticated, deleteUserHandler);
 
