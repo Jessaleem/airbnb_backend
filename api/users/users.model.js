@@ -26,7 +26,7 @@ const UserSchema = new mongoose.Schema({
   },
   about: {
     type: String,
-    default: 'Something about yourself',
+    default: 'Write something about yourself...',
   },
   avatar: {
     type: String,
