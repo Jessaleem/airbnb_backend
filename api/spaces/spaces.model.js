@@ -54,7 +54,7 @@ const SpaceSchema = new mongoose.Schema({
     default: 'HOUSE',
   },
   privacyType: {
-    tupe: String,
+    type: String,
     enum: ['ENTIRE_PLACE', 'PRIVATE_ROOM', 'SHARED_ROOM'],
   },
   amenities: {
