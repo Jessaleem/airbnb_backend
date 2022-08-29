@@ -48,7 +48,6 @@ async function uploadMultipleHandler(req, res) {
       return res.status(500).json(error);
     } finally {
       fs.unlinkSync(file.path);
-      console.log(file.path);
     }
   }
 
