@@ -3,7 +3,6 @@ const {
   makePayment,
   createPayment,
   createCustomer,
-  retrieveCustomer,
 } = require('./payment.service');
 const { updateUser } = require('../users/users.services');
 
@@ -14,6 +13,7 @@ async function handlerPayment(req, res) {
   try {
     const { id, card } = paymentMethod;
 
+    let paymentCard = null;
     let customer = null;
     if (!user?.payment?.customerId) {
       customer = await createCustomer(user, paymentMethod);
@@ -33,13 +33,15 @@ async function handlerPayment(req, res) {
         },
       };
       await updateUser(user._id, userToUpdate);
+      paymentCard = {
+        id,
+      };
+    } else {
+      customer = { id: user.payment.customerId };
+      paymentCard = {
+        id: user.payment.cards[0].paymentMethodId,
+      };
     }
-
-    customer = await retrieveCustomer(user.payment.customerId);
-
-    const paymentCard = {
-      id: user.payment.cards[0].paymentMethodId,
-    };
 
     const payment = await makePayment({ paymentMethod: paymentCard, amount, customer });
     const registerPayment = {
