@@ -5,23 +5,22 @@ const SpaceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  img: {
+  img: [{
     type: String,
     required: true,
-  },
+  }],
   dates: {
     type: Date,
-    required: true,
   },
   price: {
     type: Number,
     required: true,
   },
   howMany: {
-    type: String,
+    type: Number,
     required: true,
   },
-  adress: {
+  address: {
     street: {
       type: String,
       required: true,
@@ -77,19 +76,16 @@ const SpaceSchema = new mongoose.Schema({
     bedroomAndLaundry: [
       {
         type: String,
-        required: true,
       },
     ],
     facilities: [
       {
         type: String,
-        required: true,
       },
     ],
     entertaiment: [
       {
         type: String,
-        required: true,
       },
     ],
   },

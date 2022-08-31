@@ -48,24 +48,19 @@ const spaceSchema = Joi.object({
         .required(),
       kitchen:
         Joi.array()
-          .items(Joi.string())
-          .required(),
+          .items(Joi.string()),
       bathroom:
         Joi.array()
-          .items(Joi.string())
-          .required(),
+          .items(Joi.string()),
       bedroomAndLaundry:
         Joi.array()
-          .items(Joi.string())
-          .required(),
+          .items(Joi.string()),
       facilities:
         Joi.array()
-          .items(Joi.string())
-          .required(),
+          .items(Joi.string()),
       entertaiment:
         Joi.array()
-          .items(Joi.string())
-          .required(),
+          .items(Joi.string()),
     }),
   description:
       Joi.string()
