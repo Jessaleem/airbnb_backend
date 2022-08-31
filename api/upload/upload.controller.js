@@ -43,7 +43,7 @@ async function uploadMultipleHandler(req, res) {
         overwrite: true,
         resource_type: 'auto',
       });
-      results.push(result);
+      results.push({ url: result.secure_url });
     } catch (error) {
       return res.status(500).json(error);
     } finally {
