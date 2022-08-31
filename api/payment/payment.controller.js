@@ -62,3 +62,32 @@ async function handlerPayment(req, res) {
 }
 
 module.exports = handlerPayment;
+
+// const BASE_URL = 'http://localhost:3030';
+
+// async function createPayment(paymentMethod, amount) {
+//   try {
+//     const token = localStorage.getItem('token');
+//     localStorage.setItem('profile', JSON.stringify);
+//     const options = {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify({
+//         paymentMethod,
+//         amount,
+//       }),
+//     };
+
+//     const response = await fetch(`${BASE_URL}/api/payment`, options);
+//     return response.json();
+//   } catch (error) {
+//     return new Error(error.message);
+//   }
+// }
+
+// module.exports = {
+//   createPayment,
+// };
