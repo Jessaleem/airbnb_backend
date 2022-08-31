@@ -41,6 +41,7 @@ const UserSchema = new mongoose.Schema({
   },
   about: {
     type: String,
+    default: 'Write something about yourself...',
   },
   avatar: {
     type: String,
@@ -65,6 +66,15 @@ const UserSchema = new mongoose.Schema({
     minlength: 8,
   },
   payment: Payment,
+  location: {
+    type: String,
+  },
+  languajes: {
+    type: String,
+  },
+  reviews: {
+    type: String,
+  },
   passwordResetToken: String,
   passwordResetExpires: Date,
 }, { timestamps: true });
