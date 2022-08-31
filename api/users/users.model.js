@@ -63,10 +63,6 @@ const UserSchema = new mongoose.Schema({
   passwordResetExpires: Date,
 }, { timestamps: true });
 
-// UserSchema.virtual('password').get(function () {
-//   return this.password;
-// });
-
 UserSchema.virtual('profile').get(function () {
   const {
     name, lastName, email, role,
