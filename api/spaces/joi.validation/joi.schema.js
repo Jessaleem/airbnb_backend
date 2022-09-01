@@ -15,6 +15,13 @@ const spaceSchema = Joi.object({
   howMany:
   Joi.string()
     .required(),
+  coordinates:
+  Joi.object({
+    latitude:
+      Joi.number(),
+    longitude:
+      Joi.number(),
+  }),
   adress:
   Joi.object({
     street:

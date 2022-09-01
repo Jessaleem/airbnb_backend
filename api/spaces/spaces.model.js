@@ -16,6 +16,9 @@ const SpaceSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  coordinates: {
+    type: Number,
+  },
   howMany: {
     type: Number,
     required: true,
@@ -59,18 +62,17 @@ const SpaceSchema = new mongoose.Schema({
   amenities: {
     beds: {
       type: String,
-      required: true,
+      /* required: true, */
     },
     kitchen: [
       {
         type: String,
-        required: true,
+        /* required: true, */
       },
     ],
     bathroom: [
       {
         type: String,
-        required: true,
       },
     ],
     bedroomAndLaundry: [
