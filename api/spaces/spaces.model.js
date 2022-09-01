@@ -17,7 +17,12 @@ const SpaceSchema = new mongoose.Schema({
     required: true,
   },
   coordinates: {
-    type: Number,
+    latitude: {
+      type: Number,
+    },
+    longitude: {
+      type: Number,
+    },
   },
   howMany: {
     type: Number,
