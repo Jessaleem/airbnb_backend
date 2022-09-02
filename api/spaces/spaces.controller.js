@@ -2,7 +2,7 @@ const {
   createSpace,
   getSingleSpace,
   getAllSpaces,
-  /*   getHostSpaces, */
+  getHostSpaces,
   deleteSpace,
   updateSpace,
 } = require('./spaces.services');
@@ -44,22 +44,18 @@ async function createSpaceHandler(req, res) {
   }
 }
 
-/* async function getHostSpacesHandler(req, res) {
-  const { id } = req.params;
+async function getHostSpacesHandler(req, res) {
   try {
-    const space = await getHostSpaces({ id });
-    console.log(space);
-    if (!space) {
-      return res.status(404).json({ message: 'Spaces not found' });
-    }
-
-    return res.json(space);
+    const host = req.params;
+    console.log(host);
+    const space = await getHostSpaces(host);
+    return res.status(200).json(space);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error });
   }
 }
- */
+
 async function updateSpaceHandler(req, res) {
   const { id } = req.params;
   const spaceData = req.body;
@@ -90,7 +86,7 @@ async function deleteSpaceHandler(req, res) {
 module.exports = {
   getAllSpacesHandler,
   createSpaceHandler,
-  /*   getHostSpacesHandler, */
+  getHostSpacesHandler,
   updateSpaceHandler,
   deleteSpaceHandler,
   getSingleSpaceHandler,
