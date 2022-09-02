@@ -10,8 +10,12 @@ function getSingleSpace(id) {
 }
 
 function createSpace(space) {
-  return Space.create(space);
+  return Space.findById(space);
 }
+
+/* function getHostSpaces() {
+  return Space.find({});
+} */
 
 function updateSpace(id, space) {
   return Space.findByIdAndUpdate(id, space, { new: true });
@@ -25,6 +29,7 @@ module.exports = {
   getAllSpaces,
   getSingleSpace,
   createSpace,
+  /*   getHostSpaces, */
   updateSpace,
   deleteSpace,
 };
