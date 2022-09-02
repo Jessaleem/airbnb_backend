@@ -13,9 +13,10 @@ function createSpace(space) {
   return Space.findById(space);
 }
 
-/* function getHostSpaces() {
-  return Space.find({});
-} */
+function getHostSpaces(space) {
+  const hostId = space.host;
+  return Space.find({ host: `${hostId}` });
+}
 
 function updateSpace(id, space) {
   return Space.findByIdAndUpdate(id, space, { new: true });
@@ -29,7 +30,7 @@ module.exports = {
   getAllSpaces,
   getSingleSpace,
   createSpace,
-  /*   getHostSpaces, */
+  getHostSpaces,
   updateSpace,
   deleteSpace,
 };
