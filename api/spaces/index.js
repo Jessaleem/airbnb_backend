@@ -6,7 +6,7 @@ const {
   createSpaceHandler,
   deleteSpaceHandler,
   getAllSpacesHandler,
-  /* getSingleSpaceHandler, */
+  getSingleSpaceHandler,
   getHostSpacesHandler,
   updateSpaceHandler,
 } = require('./spaces.controller');
@@ -15,8 +15,8 @@ const router = Router();
 
 router.get('/', getAllSpacesHandler);
 router.post('/', isAuthenticated, verifyRole(['ADMIN', 'HOST']), createSpaceHandler);
-/* router.get('/:id', getSingleSpaceHandler); */
-router.get('/:host', getHostSpacesHandler);
+router.get('/:id', getSingleSpaceHandler);
+router.get('/byHostId/:host', getHostSpacesHandler);
 router.patch('/:id', spaceValidator, isAuthenticated, verifyRole(['ADMIN', 'HOST']), updateSpaceHandler);
 router.delete('/:id', isAuthenticated, verifyRole(['ADMIN', 'HOST']), deleteSpaceHandler);
 
