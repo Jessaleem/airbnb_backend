@@ -10,7 +10,7 @@ function getSingleSpace(id) {
 }
 
 function createSpace(space) {
-  return Space.findById(space);
+  return Space.create(space);
 }
 
 function getHostSpaces(space) {
