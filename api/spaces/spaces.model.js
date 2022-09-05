@@ -99,7 +99,7 @@ const SpaceSchema = new mongoose.Schema({
         type: String,
       },
     ],
-    entertaiment: [
+    entertainment: [
       {
         type: String,
       },
