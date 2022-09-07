@@ -7,8 +7,7 @@ const spaceSchema = Joi.object({
   img:
   Joi.string(),
   date:
-  Joi.date()
-    .required(),
+  Joi.date(),
   price:
   Joi.number()
     .required(),
@@ -53,6 +52,12 @@ const spaceSchema = Joi.object({
       beds:
       Joi.string()
         .required(),
+      bedrooms:
+      Joi.string(),
+      /* .required() */
+      bathrooms:
+      Joi.string(),
+      /* .required(), */
       kitchen:
         Joi.array()
           .items(Joi.string()),
@@ -64,7 +69,7 @@ const spaceSchema = Joi.object({
           .items(Joi.string()),
       facilities:
         Joi.array()
-          .items(Joi.string()),
+          .items(Joi.string())
       entertaiment:
         Joi.array()
           .items(Joi.string()),

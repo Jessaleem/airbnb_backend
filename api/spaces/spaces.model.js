@@ -11,6 +11,7 @@ const SpaceSchema = new mongoose.Schema({
   }],
   dates: {
     type: Date,
+    /* required: true, */
   },
   price: {
     type: Number,
@@ -69,10 +70,17 @@ const SpaceSchema = new mongoose.Schema({
       type: String,
       /* required: true, */
     },
+    bedrooms: {
+      type: String,
+      /* required: true, */
+    },
+    bathrooms: {
+      type: String,
+      /*  required: true, */
+    },
     kitchen: [
       {
         type: String,
-        /* required: true, */
       },
     ],
     bathroom: [
@@ -90,7 +98,7 @@ const SpaceSchema = new mongoose.Schema({
         type: String,
       },
     ],
-    entertaiment: [
+    entertainment: [
       {
         type: String,
       },
