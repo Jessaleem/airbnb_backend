@@ -16,7 +16,7 @@ router.get('/', getAllUsersHandler);
 router.post('/', userValidator, createUserHandler);
 router.get('/me', isAuthenticated, meUserHandler);
 router.get('/:id', getSingleUserHandler);
-router.patch('/:id', updateUserHandler);
+router.patch('/:id', isAuthenticated, updateUserHandler);
 router.delete('/:id', isAuthenticated, deleteUserHandler);
 
 module.exports = router;

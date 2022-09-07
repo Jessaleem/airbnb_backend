@@ -68,7 +68,7 @@ const SpaceSchema = new mongoose.Schema({
   amenities: {
     beds: {
       type: String,
-      required: true,
+      /* required: true, */
     },
     bedrooms: {
       type: String,
@@ -86,7 +86,6 @@ const SpaceSchema = new mongoose.Schema({
     bathroom: [
       {
         type: String,
-        required: true,
       },
     ],
     bedroomAndLaundry: [

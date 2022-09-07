@@ -63,15 +63,14 @@ const spaceSchema = Joi.object({
           .items(Joi.string()),
       bathroom:
         Joi.array()
-          .items(Joi.string())
-          .required(),
+          .items(Joi.string()),
       bedroomAndLaundry:
         Joi.array()
           .items(Joi.string()),
       facilities:
         Joi.array()
-          .items(Joi.string()),
-      entertainment:
+          .items(Joi.string())
+      entertaiment:
         Joi.array()
           .items(Joi.string()),
     }),
