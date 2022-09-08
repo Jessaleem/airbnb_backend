@@ -32,6 +32,9 @@ const ReservationSchema = new mongoose.Schema({
       type: Number,
     },
   },
+  price: {
+    type: Number,
+  },
   pays: {
     type: mongoose.Types.ObjectId,
     ref: 'Pays',

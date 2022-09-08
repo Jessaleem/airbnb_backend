@@ -69,7 +69,7 @@ const spaceSchema = Joi.object({
           .items(Joi.string()),
       facilities:
         Joi.array()
-          .items(Joi.string())
+          .items(Joi.string()),
       entertaiment:
         Joi.array()
           .items(Joi.string()),
