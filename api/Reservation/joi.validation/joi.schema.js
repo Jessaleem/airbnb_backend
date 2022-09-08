@@ -5,7 +5,6 @@ const arriveDate = date.setDate(date.getDate() + 1);
 const departureDate = (arriveDate + 1);
 
 const reservationSchema = Joi.object({
-
   arrive:
     Joi.date()
       .min(arriveDate)
