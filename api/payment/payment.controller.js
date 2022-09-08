@@ -20,9 +20,9 @@ async function handlerPayment(req, res) {
 
       const userToUpdate = {
         payment: {
-          customerId: customer.id,
+          // customerId: customer.id,
           cards: [{
-            paymentMethodId: id,
+            // paymentMethodId: id,
             brand: card.brand,
             country: card.country,
             expMonth: card.exp_month,

@@ -5,26 +5,23 @@ const arriveDate = date.setDate(date.getDate() + 1);
 const departureDate = (arriveDate + 1);
 
 const reservationSchema = Joi.object({
-  dates: {
-    arrive:
+
+  arrive:
     Joi.date()
       .min(arriveDate)
       .required(),
-    departure:
+  departure:
     Joi.date()
       .min(departureDate)
       .required(),
-  },
-  howMany: {
-    children:
+  children:
     Joi.number(),
-    adults:
+  adults:
     Joi.number()
       .min(1)
       .required(),
-    pets:
+  pets:
     Joi.number(),
-  },
 });
 
 const reservationUpdateSchema = Joi.object({

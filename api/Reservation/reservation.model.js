@@ -1,36 +1,32 @@
 const mongoose = require('mongoose');
 
 const ReservationSchema = new mongoose.Schema({
-  space: {
+  _id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'space',
     required: true,
   },
-  guest: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
+    // required: true,
+  },
+  arrive: {
+    type: Date,
     required: true,
   },
-  dates: {
-    arrive: {
-      type: Date,
-      required: true,
-    },
-    departure: {
-      type: Date,
-      required: true,
-    },
+  departure: {
+    type: Date,
+    required: true,
   },
-  howMany: {
-    children: {
-      type: Number,
-    },
-    adults: {
-      type: Number,
-    },
-    pets: {
-      type: Number,
-    },
+  children: {
+    type: Number,
+  },
+  adults: {
+    type: Number,
+  },
+  pets: {
+    type: Number,
   },
   price: {
     type: Number,
