@@ -63,7 +63,6 @@ async function createReservationHandler(req, res) {
 async function getUserReservationsHandler(req, res) {
   try {
     const userId = req.params;
-    console.log(req.params);
     const reservations = await getuserReservation(userId);
     return res.status(200).json(reservations);
   } catch (error) {

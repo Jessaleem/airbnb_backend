@@ -15,7 +15,8 @@ function createReservation(reservation) {
 function getuserReservation(reservation) {
   const user = reservation.userId;
   console.log(user);
-  return Reservation.find({ userId: `${user}` });
+  return Reservation.find({ userId: `${user}` })
+    .populate('spaceId');
 }
 
 function updateReservation(id, reservation) {
