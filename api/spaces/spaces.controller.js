@@ -34,7 +34,6 @@ async function getSingleSpaceHandler(req, res) {
 async function createSpaceHandler(req, res) {
   const spaceData = req.body;
   const { _id } = req.user;
-  console.log(spaceData);
   try {
     const space = await createSpace({ ...spaceData, host: _id });
     return res.status(201).json(space);
@@ -47,7 +46,6 @@ async function createSpaceHandler(req, res) {
 async function getHostSpacesHandler(req, res) {
   try {
     const host = req.params;
-    console.log(host);
     const space = await getHostSpaces(host);
     return res.status(200).json(space);
   } catch (error) {

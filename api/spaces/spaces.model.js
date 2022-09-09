@@ -108,6 +108,9 @@ const SpaceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  reservations: [{
+    type: String,
+  }],
 }, { timestamps: true });
 
 const Space = mongoose.model('space', SpaceSchema);

@@ -75,6 +75,9 @@ const UserSchema = new mongoose.Schema({
   reviews: {
     type: String,
   },
+  reservations: [{
+    type: String,
+  }],
   passwordResetToken: String,
   passwordResetExpires: Date,
 }, { timestamps: true });
