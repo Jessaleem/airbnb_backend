@@ -9,25 +9,27 @@ const SpaceSchema = new mongoose.Schema({
     type: String,
     required: true,
   }],
-  dates: {
-    type: Date,
-    /* required: true, */
-  },
   price: {
     type: Number,
     required: true,
   },
-  coordinates: {
-    latitude: {
+  floorPlan: {
+    guest: {
       type: Number,
+      required: true,
     },
-    longitude: {
+    bedrooms: {
       type: Number,
+      required: true,
     },
-  },
-  howMany: {
-    type: Number,
-    required: true,
+    bathrooms: {
+      type: Number,
+      required: true,
+    },
+    beds: {
+      type: Number,
+      required: true,
+    },
   },
   address: {
     street: {
@@ -45,6 +47,10 @@ const SpaceSchema = new mongoose.Schema({
     country: {
       type: String,
       required: true,
+    },
+    placeType: {
+      type: String,
+      required: false,
     },
     zipCode: {
       type: String,
@@ -66,18 +72,6 @@ const SpaceSchema = new mongoose.Schema({
     enum: ['ENTIRE_PLACE', 'PRIVATE_ROOM', 'SHARED_ROOM'],
   },
   amenities: {
-    beds: {
-      type: String,
-      /* required: true, */
-    },
-    bedrooms: {
-      type: String,
-      /* required: true, */
-    },
-    bathrooms: {
-      type: String,
-      /*  required: true, */
-    },
     kitchen: [
       {
         type: String,
